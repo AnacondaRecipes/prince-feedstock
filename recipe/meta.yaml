@@ -21,8 +21,6 @@ requirements:
     - pip
     - setuptools
     - wheel
-    - setuptools
-    - wheel
   run:
     - python
     - scikit-learn >=1.0.2,<2.0.0
