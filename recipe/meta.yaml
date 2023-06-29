@@ -19,10 +19,6 @@ requirements:
     - python
     - poetry-core 1.5.1
     - pip
-    - setuptools
-    - wheel
-    - setuptools
-    - wheel
   run:
     - python
     - scikit-learn >=1.0.2,<2.0.0
