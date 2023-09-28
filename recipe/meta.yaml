@@ -10,14 +10,14 @@ source:
   sha256: 4f950fc06acb134954445887ef47ca86bf09c2fabe6e500bcad535326e45e6bf
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<38]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
     - python
-    - poetry-core 1.5.1
+    - poetry-core 1.5
     - pip
   run:
     - python
