@@ -1,5 +1,5 @@
 {% set name = "prince" %}
-{% set version = "0.10.8" %}
+{% set version = "0.13.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/prince-{{ version }}.tar.gz
-  sha256: 4f950fc06acb134954445887ef47ca86bf09c2fabe6e500bcad535326e45e6bf
+  sha256: 3f60a30578ee9510f964069ab2a4d4f4c6f63711ea004783f7867f367b89c7d3
 
 build:
   number: 0
@@ -39,9 +39,9 @@ about:
   dev_url: https://github.com/MaxHalford/prince
   summary: Multivariate exploratory data analysis in Python — PCA, CA, MCA, MFA, FAMD, GPA
   description: |
-    Prince is a Python library for multivariate exploratory data analysis in Python. 
-    It includes a variety of methods for summarizing tabular data, 
-    including principal component analysis (PCA) and correspondence analysis (CA). 
+    Prince is a Python library for multivariate exploratory data analysis in Python.
+    It includes a variety of methods for summarizing tabular data,
+    including principal component analysis (PCA) and correspondence analysis (CA).
     Prince provides efficient implementations, using a scikit-learn API.
   license: MIT
   license_family: MIT
