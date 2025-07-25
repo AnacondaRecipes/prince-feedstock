@@ -1,29 +1,29 @@
 {% set name = "prince" %}
-{% set version = "0.13.0" %}
+{% set version = "0.16.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/prince-{{ version }}.tar.gz
-  sha256: 3f60a30578ee9510f964069ab2a4d4f4c6f63711ea004783f7867f367b89c7d3
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 8b3b9e74fc84ad066a1e6ef4fc076a55d80b7a46db2541a76902e47951c39b16
 
 build:
   number: 0
-  skip: true  # [py<38]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+  skip: true  # [py<310]
 
 requirements:
   host:
     - python
-    - poetry-core 1.5.1
     - pip
+    - poetry-core >=1.0.0
   run:
     - python
-    - scikit-learn >=1.0.2,<2.0.0
-    - pandas >=1.4.1,<3.0.0
-    - altair >=4.2.2,<6.0.0
+    - scikit-learn >=1.5.1,<2.0.0
+    - pandas >=2.2.0,<3.0.0
+    - altair >=5.0.0,<6.0.0
 
 test:
   imports:
@@ -34,8 +34,8 @@ test:
     - pip check
 
 about:
-  home: https://maxhalford.github.io/prince/
-  doc_url: https://maxhalford.github.io/prince/
+  home: https://maxhalford.github.io/prince
+  doc_url: https://maxhalford.github.io/prince
   dev_url: https://github.com/MaxHalford/prince
   summary: Multivariate exploratory data analysis in Python — PCA, CA, MCA, MFA, FAMD, GPA
   description: |
