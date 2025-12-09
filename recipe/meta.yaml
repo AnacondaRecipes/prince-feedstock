@@ -1,13 +1,13 @@
 {% set name = "prince" %}
-{% set version = "0.16.0" %}
+{% set version = "0.16.2" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 8b3b9e74fc84ad066a1e6ef4fc076a55d80b7a46db2541a76902e47951c39b16
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: ecd52e0c9a78ba173eb8b8b69fe8eb9ffe67f5db4fdbacf29e63af4ce330d8e2
 
 build:
   number: 0
@@ -21,9 +21,9 @@ requirements:
     - poetry-core >=1.0.0
   run:
     - python
-    - scikit-learn >=1.5.1,<2.0.0
-    - pandas >=2.2.0,<3.0.0
-    - altair >=5.0.0,<6.0.0
+    - scikit-learn <2.0.0,>=1.5.1
+    - pandas <3.0.0,>=2.2.0
+    - altair <6.0.0,>=5.0.0
 
 test:
   imports:
