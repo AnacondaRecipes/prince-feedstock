@@ -18,20 +18,37 @@ requirements:
   host:
     - python
     - pip
-    - poetry-core >=1.0.0
   run:
     - python
-    - scikit-learn <2.0.0,>=1.5.1
-    - pandas <3.0.0,>=2.2.0
-    - altair <6.0.0,>=5.0.0
+    - scikit-learn >=1.5.1,<2.0.0
+    - pandas >=2.2.0,<3.0.0
+    - altair >=5.0.0,<6.0.0
+
+{% set ignore_tests = "" %}
+# E   ModuleNotFoundError: No module named 'rpy2'
+{% set ignore_tests = " --ignore=tests/some_test.py" %}  # [osx or linux-aarch64]
+{% set ignore_tests = ignore_tests + " --ignore=tests/test_ca.py" %}  # [osx or linux-aarch64]
+{% set ignore_tests = ignore_tests + " --ignore=tests/test_famd.py" %}  # [osx or linux-aarch64]
+{% set ignore_tests = ignore_tests + " --ignore=tests/test_mca.py" %}  # [osx or linux-aarch64]
+{% set ignore_tests = ignore_tests + " --ignore=tests/test_mfa.py" %}  # [osx or linux-aarch64]
+{% set ignore_tests = ignore_tests + " --ignore=tests/test_pca.py" %}  # [osx or linux-aarch64]
+{% set ignore_tests = ignore_tests + " --ignore=tests/test_svd.py" %}  # [osx or linux-aarch64]
 
 test:
+  source_files:
+    - tests
   imports:
     - prince
   requires:
     - pip
+    - pytest
+    - xarray
+    - rpy2  # [not(osx or linux-aarch64)]
   commands:
     - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
+    # rpy2 is not available on py312+
+    - pytest tests {{ ignore_tests }}  # [py<312]
 
 about:
   home: https://maxhalford.github.io/prince
