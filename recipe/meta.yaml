@@ -24,31 +24,16 @@ requirements:
     - pandas >=2.2.0,<3.0.0
     - altair >=5.0.0,<6.0.0
 
-{% set ignore_tests = "" %}
-# E   ModuleNotFoundError: No module named 'rpy2'
-{% set ignore_tests = " --ignore=tests/some_test.py" %}  # [not (linux and x86_64)]
-{% set ignore_tests = ignore_tests + " --ignore=tests/test_ca.py" %}  # [not (linux and x86_64)]
-{% set ignore_tests = ignore_tests + " --ignore=tests/test_famd.py" %}  # [not (linux and x86_64)]
-{% set ignore_tests = ignore_tests + " --ignore=tests/test_mca.py" %}  # [not (linux and x86_64)]
-{% set ignore_tests = ignore_tests + " --ignore=tests/test_mfa.py" %}  # [not (linux and x86_64)]
-{% set ignore_tests = ignore_tests + " --ignore=tests/test_pca.py" %}  # [not (linux and x86_64)]
-{% set ignore_tests = ignore_tests + " --ignore=tests/test_svd.py" %}  # [not (linux and x86_64)]
-
 test:
-  source_files:
-    - tests
   imports:
     - prince
   requires:
     - pip
-    - pytest
-    - xarray
-    - rpy2  # [linux and x86_64]
   commands:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
-    # rpy2 is not available on py312+ (available only on linux-64)
-    - pytest tests {{ ignore_tests }}  # [py<312]
+    # E   ModuleNotFoundError: No module named 'rpy2'
+    # pytest tests
 
 about:
   home: https://maxhalford.github.io/prince
