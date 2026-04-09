@@ -1,5 +1,5 @@
 {% set name = "prince" %}
-{% set version = "0.16.2" %}
+{% set version = "0.17.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,22 +7,24 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: ecd52e0c9a78ba173eb8b8b69fe8eb9ffe67f5db4fdbacf29e63af4ce330d8e2
+  sha256: 2048aaa6ab2c738a17796a3f2ab669724db95fdc40dfcd004d6f9993dce1ee00
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   skip: true  # [py<310]
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
-    - python
     - pip
+    - python
+    - setuptools
+    - wheel
   run:
     - python
-    - scikit-learn >=1.5.1,<2.0.0
-    - pandas >=2.2.0,<3.0.0
-    - altair >=5.0.0,<6.0.0
+    - scikit-learn >=1.5.1
+    - pandas >=2.2.0
+    - altair >=5.0.0
 
 test:
   imports:
