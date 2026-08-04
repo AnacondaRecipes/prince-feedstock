@@ -1,5 +1,5 @@
 {% set name = "prince" %}
-{% set version = "0.17.0" %}
+{% set version = "0.20.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 2048aaa6ab2c738a17796a3f2ab669724db95fdc40dfcd004d6f9993dce1ee00
+  sha256: 8493bad93c0d6202134d87b2a08e10eacd9d51d143eeadd6ea510de7174bfc10
 
 build:
   number: 0
@@ -25,6 +25,7 @@ requirements:
     - scikit-learn >=1.5.1
     - pandas >=2.2.0
     - altair >=5.0.0
+    - typing_extensions >=4.6
 
 test:
   imports:
